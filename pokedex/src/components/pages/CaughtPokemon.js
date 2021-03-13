@@ -1,6 +1,6 @@
 import React from "react";
 
-function CaughtPokemons() {
+function CaughtPokemon() {
     return (
         <div>
             <h4>Caught Pokemons</h4>
@@ -8,4 +8,4 @@ function CaughtPokemons() {
     );
 }
 
-export default CaughtPokemons;
+export default CaughtPokemon;

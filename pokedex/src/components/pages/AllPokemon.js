@@ -1,6 +1,6 @@
 import React from "react";
 
-function AllPokemons() {
+function AllPokemon() {
     return (
         <div>
             <h4>All Pokemons</h4>
@@ -8,4 +8,4 @@ function AllPokemons() {
     );
 }
 
-export default AllPokemons;
+export default AllPokemon;
