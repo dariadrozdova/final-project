@@ -7,7 +7,8 @@ module.exports = {
     output: {
         path: path.resolve("./build"),
         filename: "bundle.js",
-        publicPath: "/"
+        publicPath: "/",
+        assetModuleFilename: 'images/[hash][ext][query]'
     },
     module: {
         rules: [
@@ -42,12 +43,8 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpe?g|gif)$/i,
-                use: [
-                    {
-                        loader: "file-loader"
-                    }
-                ]
+                test: /\.(png|svg|jpg|gif)/,
+                type: 'asset/resource'
             },
         ]
     },
@@ -61,7 +58,7 @@ module.exports = {
 
     devServer: {
         historyApiFallback: true,
-        contentBase: './dist',
+        contentBase: './build',
         port: 5000
     }
 }
