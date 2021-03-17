@@ -1,27 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import PokemonPage from './PokemonPage';
 import Button from 'react-bootstrap/Button';
+import { getPokemon } from "../getPokemon/getPokemon";
 
 function CaughtPokemon() {
     const [pokemon, setPokemon] = useState([]);
     const [cards, setCards] = useState(14);
     const [notOver, setNotOver] = useState(true);
 
-    const abortController = new AbortController();
+    const server = 'http://localhost:3000/pokemons?caught=true';
+    const processing = (data) => {
+        return data[0].caught ? setPokemon(data) : null
+    }
 
     useEffect(() => {
-        let url = 'http://localhost:3000/pokemons?caught=true';
-        fetch(url,{ signal: abortController.signal })
-            .then(response => response.json())
-            .then(data => {data = data.map((pokemon) => { return pokemon });
-            if (data[0].caught) {
-                setPokemon(data)
-            }
-            });
-        return () => {
-            abortController.abort();
-        };
-    });
+        getPokemon(setPokemon, server, processing);
+    }, []);
 
     const checkMorePokemon = () => {
         if (cards + 14 >= pokemon.length) {

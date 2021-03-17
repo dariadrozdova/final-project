@@ -14,7 +14,6 @@ import PokemonInfo from './pages/PokemonInfo';
 import Col from 'react-bootstrap/Col';
 import backgroundImage from '/src/assets/backgrounds/pattern.png';
 
-
 export default function App() {
     return (
         <div className="d-flex flex-column" style={{minHeight: "100vh", background: `url(${backgroundImage})`}}>

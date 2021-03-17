@@ -1,27 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container';
+import { getPokemonById} from "../getPokemon/getPokemon";
 
 function PokemonInfo() {
     const [caught, setCaught] = useState(false);
     const [pokemon, setPokemon] = useState('');
-    let id = null;
+
     let pathname = window.location.pathname;
-    id = pathname.substring(pathname.lastIndexOf('/') + 1);
+    let id = pathname.substring(pathname.lastIndexOf('/') + 1);
+    let server = `http://localhost:3000/pokemons/${id}`;
 
     useEffect(() => {
-        let url = `http://localhost:3000/pokemons/${id}`;
-        fetch(url)
-            .then(response => response.json())
-            .then(json => {
-                    setPokemon(json);
-                    setCaught(json.caught);
-                }
-            )
-    }, [])
+        getPokemonById(server, setPokemon, setCaught);
+    }, []);
 
     let name = pokemon.name;
-
     function ucFirst(name) {
         if (!name) return name;
         return name[0].toUpperCase() + name.slice(1);

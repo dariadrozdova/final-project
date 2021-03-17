@@ -11,10 +11,10 @@ function PokemonPage(props) {
     }, [])
 
     const catchPokemon = (pokemonId, pokemonName) => {
-        let url = 'http://localhost:3000/pokemons/' + pokemonId;
+        let server = 'http://localhost:3000/pokemons/' + pokemonId;
         let date = new Date();
         let today = ([date.getDate(), ('0' + (date.getMonth() + 1)), date.getFullYear()]).join('-');
-        fetch(url, {
+        fetch(server, {
             method: 'PUT',
             body: JSON.stringify({
                 id: pokemonId,
@@ -27,13 +27,11 @@ function PokemonPage(props) {
             }
         })
             .then(response => response.json())
-            .then(json =>{ console.log(json);
-                setCaught(true);
-            })
+            .then(() => setCaught(true))
     }
 
     let fetchedPokemon = props.pokemon;
-    let status = caught ? "Caught!" : "Catch";
+    let status = caught ? "Caught" : "Catch";
 
     const CaughtButton = () => (
         <Button disabled={caught} onClick={() => {
