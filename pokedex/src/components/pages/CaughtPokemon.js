@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PokemonPage from './PokemonPage';
 import Button from 'react-bootstrap/Button';
-import { getPokemon } from "../getPokemon/getPokemon";
-
+import { getPokemon } from '../getPokemon/getPokemon';
 function CaughtPokemon() {
     const [pokemon, setPokemon] = useState([]);
     const [cards, setCards] = useState(14);

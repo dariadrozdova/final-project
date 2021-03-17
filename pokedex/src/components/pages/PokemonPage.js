@@ -2,40 +2,21 @@ import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import { catchPokemon } from '../getPokemon/getPokemon';
 
 function PokemonPage(props) {
     const [caught, setCaught] = useState(false);
 
     useEffect(() => {
         setCaught(props.pokemon.caught);
-    }, [])
-
-    const catchPokemon = (pokemonId, pokemonName) => {
-        let server = 'http://localhost:3000/pokemons/' + pokemonId;
-        let date = new Date();
-        let today = ([date.getDate(), ('0' + (date.getMonth() + 1)), date.getFullYear()]).join('-');
-        fetch(server, {
-            method: 'PUT',
-            body: JSON.stringify({
-                id: pokemonId,
-                name: pokemonName,
-                caught: true,
-                date: today
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
-            .then(response => response.json())
-            .then(() => setCaught(true))
-    }
+    }, []);
 
     let fetchedPokemon = props.pokemon;
     let status = caught ? "Caught" : "Catch";
 
     const CaughtButton = () => (
         <Button disabled={caught} onClick={() => {
-            catchPokemon(fetchedPokemon.id, fetchedPokemon.name);
+            catchPokemon(fetchedPokemon.id, fetchedPokemon.name, setCaught);
         }} variant="info">{status}</Button>
     )
         return(

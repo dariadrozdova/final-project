@@ -5,10 +5,10 @@ import {
     BrowserRouter as Router,
     Switch,
     Route
-} from "react-router-dom";
-import CaughtPokemon from "./pages/CaughtPokemon";
-import MainPage from "./pages/MainPage";
-import AllPokemon from "./pages/AllPokemon";
+} from 'react-router-dom';
+import CaughtPokemon from './pages/CaughtPokemon';
+import MainPage from './pages/MainPage';
+import AllPokemon from './pages/AllPokemon';
 import Container from 'react-bootstrap/Container';
 import PokemonInfo from './pages/PokemonInfo';
 import Col from 'react-bootstrap/Col';

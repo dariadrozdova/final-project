@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container';
-import { getPokemonById} from "../getPokemon/getPokemon";
+import { getPokemonById } from '../getPokemon/getPokemon';
 
 function PokemonInfo() {
     const [caught, setCaught] = useState(false);
     const [pokemon, setPokemon] = useState('');
-
-    let pathname = window.location.pathname;
+    const pathname = window.location.pathname;
     let id = pathname.substring(pathname.lastIndexOf('/') + 1);
     let server = `http://localhost:3000/pokemons/${id}`;
 
