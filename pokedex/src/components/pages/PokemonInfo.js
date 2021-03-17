@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container';
-import { getPokemonById } from '../getPokemon/getPokemon';
+import { getPokemonById } from '../../redux/actions/getPokemon';
 
 function PokemonInfo() {
     const [caught, setCaught] = useState(false);
